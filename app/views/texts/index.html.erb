@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+
+<div>
+  <h1>Texts</h1>
+  <% @texts.each do |text| %>
+    <div>
+      <h4><%= text.title %></h4>
+      <div><%= link_to 'Show', text %></div>
+      <div><%= link_to 'Edit', edit_text_path(text) %></div>
+      <div><%= link_to 'Destroy', text, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+    </div>
+  <% end %>
+</div>
+
+<br>
+
+<%= link_to 'New Text', new_text_path %>
