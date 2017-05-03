@@ -30,10 +30,12 @@ class MessageList extends Component {
 
   render() {
     return (
-      <div className="messages-table" id="messages-table">
-        {this.state.messages.map( (message, index) => (
-          <Message content={message.content} user={message.user} key={index} />
-        ))}
+      <div className="messages" id="messages">
+        <div className="messages-table" id="messages-table">
+          {this.state.messages.map( (message, index) => (
+            <Message content={message.content} user={message.user} key={index} />
+          ))}
+        </div>
       </div>
     )
   }

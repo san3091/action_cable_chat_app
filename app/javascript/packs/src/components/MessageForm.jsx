@@ -6,6 +6,7 @@ class MessageForm extends Component {
     this.state = {
       message: "write"
     }
+    this.handleChange = this.handleChange.bind(this)
   }
 
   handleSubmit(e) {
@@ -13,17 +14,21 @@ class MessageForm extends Component {
   }
 
   handleChange(e) {
-    console.log(e.target.value)
+    this.setState({
+      message: e.target.value
+    })
   }
 
   render() {
     return (
       <div className="message-input">
-        <form onChange={this.handleChange}>
-          <textarea value={this.state.message}/>
-          <input type="submit" onClick={this.handleSubmit}>Send</input>
+        <form>
+          <textarea value={this.state.message} onChange={this.handleChange}/>
+          <input type="submit" value="Send" onClick={this.handleSubmit}/>
         </form>
       </div>
     )
   }
 }
+
+export default MessageForm

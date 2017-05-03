@@ -7,10 +7,12 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import Room from './src/components/Room'
 import MessageList from './src/components/MessageList'
+import MessageForm from './src/components/MessageForm'
 
 const App = props => (
   <Room>
-    <MessageList/>
+    <MessageList />
+    <MessageForm />
   </Room>
 )
 
