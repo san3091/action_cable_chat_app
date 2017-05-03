@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Message from './Message'
+import messageUtils from '../utils/messageUtils'
 
 class MessageList extends Component {
   constructor() {
@@ -18,11 +19,7 @@ class MessageList extends Component {
   }
 
   fetchMessages() {
-    let headers = new Headers({
-      Accept: 'application/json'
-    })
-    
-    fetch('/messages.json', { method: 'get', headers: headers })
+    messageUtils.list()
     .then( data => data.json())
     .then( json => {
       this.setState({
