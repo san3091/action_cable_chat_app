@@ -15,6 +15,7 @@ class MessageList extends Component {
   }
 
   fetchMessages() {
+    console.log("fetching messages")
     fetch('/messages.json')
     .then( data => data.json())
     .then( json => {
@@ -26,11 +27,13 @@ class MessageList extends Component {
   }
 
   render() {
-    <div className="messages-table" id="messages-table">
-      {this.state.messages.map( (message, index) => (
-        <Message content={message.content} user={message.user} key={index} />
-      ))}
-    </div>
+    return (
+      <div className="messages-table" id="messages-table">
+        {this.state.messages.map( (message, index) => (
+          <Message content={message.content} user={message.user} key={index} />
+        ))}
+      </div>
+    )
   }
 }
 

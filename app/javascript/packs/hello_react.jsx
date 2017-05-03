@@ -5,8 +5,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import Room from './components/Room'
-import MessageList from './components/MessageList'
+import Room from './src/components/Room'
+import MessageList from './src/components/MessageList'
 
 const App = props => (
   <Room>
@@ -17,6 +17,6 @@ const App = props => (
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <App/>,
-    document.body.appendChild(document.createElement('div')),
+    document.getElementById("message-room"),
   )
 })
