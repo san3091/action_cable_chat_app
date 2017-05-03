@@ -20,8 +20,8 @@ class MessageForm extends Component {
     return (
       <div className="message-input">
         <form onChange={this.handleChange}>
-          <input value={this.state.message} type="text"/>
-          <button onClick={this.handleSubmit}>Send</button>
+          <textarea value={this.state.message}/>
+          <input type="submit" onClick={this.handleSubmit}>Send</input>
         </form>
       </div>
     )
