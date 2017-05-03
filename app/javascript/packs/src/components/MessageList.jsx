@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Message from './Message'
-import messageUtils from '../utils/messageUtils'
+import { messageUtils } from '../utils/messageUtils'
 
 class MessageList extends Component {
   constructor() {
@@ -20,10 +20,9 @@ class MessageList extends Component {
 
   fetchMessages() {
     messageUtils.list()
-    .then( data => data.json())
-    .then( json => {
+    .then( response => {
       this.setState({
-        messages: json
+        messages: response.data
       })
     })
   }
@@ -36,12 +35,14 @@ class MessageList extends Component {
 
   // setup ActionCable subscription
   setupSubscription() {
+    let myself = this
     App.comments = App.cable.subscriptions.create("RoomChannel", {
 
         connected: function () { console.log("connected to room channel")},
 
         received: function (data) {
-          this.updateMessagesList(data.message);
+          console.log(JSON.parse(data.message))
+          myself.updateMessagesList(JSON.parse(data.message));
         }
       }
     )

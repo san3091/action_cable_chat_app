@@ -12,5 +12,7 @@
   "src/components/MessageList.js": "http://localhost:8080/packs/src/components/MessageList.js",
   "src/components/MessageList.js.map": "http://localhost:8080/packs/src/components/MessageList.js.map",
   "src/components/Room.js": "http://localhost:8080/packs/src/components/Room.js",
-  "src/components/Room.js.map": "http://localhost:8080/packs/src/components/Room.js.map"
+  "src/components/Room.js.map": "http://localhost:8080/packs/src/components/Room.js.map",
+  "src/utils/messageUtils.js": "http://localhost:8080/packs/src/utils/messageUtils.js",
+  "src/utils/messageUtils.js.map": "http://localhost:8080/packs/src/utils/messageUtils.js.map"
 }

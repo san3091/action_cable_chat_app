@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-const messageUtils = {
+export let messageUtils = {
 
-  post: (message) => {
+  post: function(message) {
     let params = {
       method: 'post',
       url: '/messages',
@@ -14,22 +14,22 @@ const messageUtils = {
     }
 
     return call(params)
-  }
+  },
 
-  list: () => {
+  list: function(){
     let params = {
-      method: 'get'
+      method: 'get',
       url: '/messages'
     }
+
+    return call(params)
   }
 
 }
 
-export messageUtils
 
 function call(options) {
-  let params = {
-    ...options,
+  let defaultParams = {
     withCredentials: true,
     headers: {
       'Content-Type': 'application/json',
@@ -37,12 +37,18 @@ function call(options) {
       'X-CSRF-Token': getCSRFToken()
     }
   }
+
+  let params = Object.assign({}, defaultParams, options)
   return axios(params)
 }
 
 function getCSRFToken() {
-  const meta = document.getElementByName('csrf-token')
+  const meta = document.getElementsByName('csrf-token')
   if (meta.length === 1) {
-    return meta.getAttribute('content')
+    return meta[0].getAttribute('content')
   }
 }
+
+
+
+

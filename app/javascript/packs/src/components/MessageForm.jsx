@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import MessageInput from './MessageInput'
-import messageUtils from '../utils/messageUtils'
+import { messageUtils } from '../utils/messageUtils'
 
 class MessageForm extends Component {
   constructor(props) {
     super()
     this.state = {
-      message: "write"
+      message: ""
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -14,10 +14,8 @@ class MessageForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    console.log(this.state.message)
 
     messageUtils.post(this.state.message)
-    .then( data => data.json())
     .then( json => console.log(json))
   }
 
