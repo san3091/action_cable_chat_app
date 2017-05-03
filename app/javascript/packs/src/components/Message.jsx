@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
 const Message = ({ content, user }) => (
-  <div class="message">
-    <div class="message-user">
+  <div className="message">
+    <div className="message-user">
       {user.username}
     </div>
-    <div class="message-content">
+    <div className="message-content">
       {content}
     </div>
   </div>

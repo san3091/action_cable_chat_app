@@ -15,11 +15,13 @@ class MessageList extends Component {
   }
 
   fetchMessages() {
-    console.log("fetching messages")
-    fetch('/messages.json')
+    let headers = new Headers({
+      Accept: 'application/json'
+    })
+    
+    fetch('/messages.json', { method: 'get', headers: headers })
     .then( data => data.json())
     .then( json => {
-      console.log(json)
       this.setState({
         messages: json
       })

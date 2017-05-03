@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
 
     def get_messages
       @messages = Message.for_display
-      @message  = current_user.messages.build
+      # @message  = current_user.messages.build
     end
 
     def message_params
