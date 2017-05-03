@@ -9,7 +9,7 @@ import Room from './src/components/Room'
 import MessageList from './src/components/MessageList'
 import MessageForm from './src/components/MessageForm'
 
-const App = props => (
+const ChatApp = props => (
   <Room>
     <MessageList />
     <MessageForm />
@@ -18,7 +18,7 @@ const App = props => (
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <App/>,
+    <ChatApp/>,
     document.getElementById("message-room"),
   )
 })

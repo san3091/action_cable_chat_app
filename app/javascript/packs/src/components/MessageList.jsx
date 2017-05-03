@@ -7,11 +7,14 @@ class MessageList extends Component {
     this.state = {
       messages: []
     }
-    this.fetchMessages = this.fetchMessages.bind(this)
+    this.fetchMessages      = this.fetchMessages.bind(this)
+    this.updateMessagesList = this.updateMessagesList.bind(this)
+    this.setupSubscription  = this.setupSubscription.bind(this)
   }
 
   componentWillMount() {
     this.fetchMessages()
+    this.setupSubscription()
   }
 
   fetchMessages() {
@@ -26,6 +29,25 @@ class MessageList extends Component {
         messages: json
       })
     })
+  }
+
+  updateMessagesList(message) {
+    let messages = this.state.messages.slice()
+    messages.push(message)
+    this.setState({ messages })
+  }
+
+  // setup ActionCable subscription
+  setupSubscription() {
+    App.comments = App.cable.subscriptions.create("RoomChannel", {
+
+        connected: function () { console.log("connected to room channel")},
+
+        received: function (data) {
+          this.updateMessagesList(data.message);
+        }
+      }
+    )
   }
 
   render() {

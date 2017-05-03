@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import MessageInput from './MessageInput'
 
 class MessageForm extends Component {
   constructor(props) {
@@ -7,10 +8,12 @@ class MessageForm extends Component {
       message: "write"
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleSubmit(e) {
-    console.log(e.target.value)
+    e.preventDefault()
+    console.log(this.state.message)
   }
 
   handleChange(e) {
@@ -21,12 +24,9 @@ class MessageForm extends Component {
 
   render() {
     return (
-      <div className="message-input">
-        <form>
-          <textarea value={this.state.message} onChange={this.handleChange}/>
-          <input type="submit" value="Send" onClick={this.handleSubmit}/>
-        </form>
-      </div>
+      <MessageInput value={this.state.message}
+                    handleChange={this.handleChange}
+                    handleSubmit={this.handleSubmit} />
     )
   }
 }
